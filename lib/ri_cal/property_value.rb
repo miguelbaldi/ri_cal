@@ -58,7 +58,8 @@ module RiCal
       match = separated_line[:value].match(/(\d\d\d\d)(\d\d)(\d\d)((T?)((\d\d)(\d\d)(\d\d))(Z?))?/)
       raise Exception.new("Invalid date") unless match
       if match[5] == "T" # date-time
-        time = Time.utc(match[1].to_i, match[2].to_i, match[3].to_i, match[7].to_i, match[8].to_i, match[9].to_i)
+        #FIXME I think there's no need for the above line
+        #time = Time.utc(match[1].to_i, match[2].to_i, match[3].to_i, match[7].to_i, match[8].to_i, match[9].to_i)
         parms = (separated_line[:params] ||{}).dup
         if match[10] == "Z"
           raise Exception.new("Invalid time, cannot combine Zulu with timezone reference") if parms[:tzid]
